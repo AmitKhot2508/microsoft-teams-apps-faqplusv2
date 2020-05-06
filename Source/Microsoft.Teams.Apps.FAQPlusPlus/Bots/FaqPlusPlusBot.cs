@@ -163,12 +163,12 @@ namespace Microsoft.Teams.Apps.FAQPlusPlus.Bots
                 }
 
                 // Get the current culture info to use in resource files
-                //string locale = turnContext?.Activity.Entities?.FirstOrDefault(entity => entity.Type == "clientInfo")?.Properties["locale"]?.ToString();
+                string locale = turnContext?.Activity.Entities?.FirstOrDefault(entity => entity.Type == "clientInfo")?.Properties["locale"]?.ToString();
 
-                //if (!string.IsNullOrEmpty(locale))
-                //{
-                   // CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(locale);
-                //}
+                if (!string.IsNullOrEmpty(locale))
+                {
+                   CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(locale);
+                }
 
                 return base.OnTurnAsync(turnContext, cancellationToken);
             }
